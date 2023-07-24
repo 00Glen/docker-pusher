@@ -1,0 +1,4 @@
+{
+  "commitSubjectTemplate": "chore(repo): update to v{{version}}",
+  "branchName": ""
+}
