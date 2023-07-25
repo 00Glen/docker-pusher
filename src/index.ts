@@ -33,20 +33,20 @@ const args = parse<IArgs>({
 const config = getConfig(args);
 const versions = getVersions();
 
-//Validate repo, args and configurations
+// Validate repo, args and configurations
 validateRepo(config, versions.version);
 
-//Docker build and push
+// Docker build and push
 const nextVersion = config.version ?? config.beta ? versions.nextBeta() : versions.nextPatch();
 logger.info(`Current version: ${versions.version}`);
 logger.info(`New version: ${nextVersion}`);
 dockerBuild(config.imageName || '', nextVersion);
 dockerPush(config.imageName || '', nextVersion);
 
-//Bumb version
+// Bumb version
 updatePackageVersion(nextVersion);
 
-//Git commit and tag
+// Git commit and tag
 if (!config.skipGit) {
   if (isAlreadyVersioned(config.commitSubjectTemplate, versions.version)) {
     logger.error(`Already versioned`);
@@ -59,5 +59,5 @@ if (!config.skipGit) {
   logger.info(`Git tag skipped`);
 }
 
-//finish
+// finish
 logger.sucess(`Version ${nextVersion} pushed successfully!`);
