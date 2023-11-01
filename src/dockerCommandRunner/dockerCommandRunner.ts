@@ -2,7 +2,7 @@ import { execSync } from 'child_process';
 import { logger } from '../logger';
 
 export function dockerBuild(name: string, version: string) {
-  const command = `docker build -t ${name}:${version} ${process.cwd()}`;
+  const command = `docker build -t ${name}:${version} "${process.cwd()}"`;
   logger.info(`Running: ${command}`);
   execSync(command);
   logger.sucess('Docker image successfully built');

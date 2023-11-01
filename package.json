@@ -1,6 +1,6 @@
 {
   "name": "docker-pusher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An auto versioner for docker image and git, also pushes the docker image to nexus",
   "main": "bin/index.js",
   "types": "bin/index.d.ts",
